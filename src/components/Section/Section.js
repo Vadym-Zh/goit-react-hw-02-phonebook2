@@ -24,5 +24,5 @@ export const Section = ({ title, children, headerContent }) => {
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  // headerContent: PropTypes.object.isRequired,
+  headerContent: PropTypes.object,
 };

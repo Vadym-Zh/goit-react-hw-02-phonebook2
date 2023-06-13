@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 
-export const ListBtn = styled.button`
-  border: none;
-  background-color: transparent;
-  outline: solid black 1px;
-  padding: 3px 15px;
-  background-color: lightgray;
-`;
-
-export const ContactsTable = styled.table`
+export const ContactsTable = styled.ul`
   min-width: 500px;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
 `;
 
-export const ContactsTableHead = styled.th`
+export const ContactsTableHead = styled.li`
   padding: 15px;
   font-weight: 500;
   font-size: 16px;
@@ -20,13 +15,19 @@ export const ContactsTableHead = styled.th`
   border-top: 1px solid darkgrey;
 `;
 
-export const ContactsTableRow = styled.tr`
+export const ContactsTableRow = styled.ul`
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
   :hover {
     background-color: lightgrey;
   }
+  /* :first-child {
+    display: none;
+  } */
 `;
 
-export const ContactsTableCeil = styled.td`
+export const ContactsTableCeil = styled.li`
   padding: 10px;
   text-align: center;
 
@@ -34,14 +35,22 @@ export const ContactsTableCeil = styled.td`
     border-right: 1px solid darkgrey;
   }
 `;
-
-export const ContactsFlexCeil = styled.td`
-  /* display: flex; */
-  align-items: center;
-  gap: 15px;
-  padding: 10px;
-
-  :not(:last-child) {
-    border-right: 1px solid darkgrey;
-  }
+export const ListBtn = styled.button`
+  display: block;
+  border: none;
+  background-color: transparent;
+  outline: solid black 1px;
+  padding: 3px 15px;
+  background-color: lightgray;
 `;
+
+// export const ContactsFlexCeil = styled.td`
+//   /* display: flex; */
+//   align-items: center;
+//   gap: 15px;
+//   padding: 10px;
+
+//   :not(:last-child) {
+//     border-right: 1px solid darkgrey;
+//   }
+// `;

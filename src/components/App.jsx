@@ -31,15 +31,12 @@ export class App extends Component {
   };
 
   addContact = (name, number) => {
-    const normalizedName = name.toLowerCase();
-
     const currentName = this.state.contacts.find(
-      item => item.name.toLowerCase() === normalizedName
+      item => item.name.toLowerCase() === name.toLowerCase()
     );
 
-    if (normalizedName === currentName.name.toLowerCase()) {
-      // if (currentName && name === currentName.name) {
-      alert(`${name} is already exist!`);
+    if (currentName && name.toLowerCase() === currentName.name.toLowerCase()) {
+      alert(`"${name}" is already exist!`);
       return;
     }
 
