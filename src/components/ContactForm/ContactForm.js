@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 import {
   Form,
@@ -12,7 +12,7 @@ import {
 } from './ContactForm.styled';
 
 export class ContactForm extends Component {
-  contactId = nanoid();
+  // contactId = nanoid();
 
   state = {
     name: '',
@@ -53,7 +53,7 @@ export class ContactForm extends Component {
           <LabelContainer>
             <Input
               type="text"
-              id={this.contactId}
+              id="name"
               name="name"
               value={name}
               placeholder=" "
