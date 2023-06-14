@@ -1,42 +1,47 @@
 import PropTypes from 'prop-types';
 
 import {
+  ListBtn,
   ContactsTable,
   ContactsTableHead,
   ContactsTableRow,
   ContactsTableCeil,
-  ListBtn,
+  ContactsFlexCeil,
 } from './ContactList.styled';
 
 export const ContactList = ({ contacts, onRemove }) => {
   return (
     <>
       <ContactsTable>
-        <ContactsTableHead>Name</ContactsTableHead>
-        <ContactsTableHead>Phone number</ContactsTableHead>
-        <ContactsTableHead>Contacts ({contacts.length})</ContactsTableHead>
-      </ContactsTable>
+        <thead>
+          <tr>
+            <ContactsTableHead>Name</ContactsTableHead>
+            <ContactsTableHead>Phone number</ContactsTableHead>
+            <ContactsTableHead>Contacts ({contacts.length})</ContactsTableHead>
+          </tr>
+        </thead>
 
-      <div>
-        {contacts.map(({ id, name, number }) => {
-          return (
-            <ContactsTableRow key={id}>
-              <ContactsTableCeil>{name}</ContactsTableCeil>
-              <ContactsTableCeil>{number}</ContactsTableCeil>
-              <ContactsTableCeil>
-                <ListBtn
-                  type="button"
-                  onClick={() => {
-                    onRemove(id);
-                  }}
-                >
-                  Delet
-                </ListBtn>
-              </ContactsTableCeil>
-            </ContactsTableRow>
-          );
-        })}
-      </div>
+        <tbody>
+          {contacts.map(({ id, name, number }) => {
+            return (
+              <ContactsTableRow key={id}>
+                <ContactsFlexCeil>{name}</ContactsFlexCeil>
+                <ContactsTableCeil>{number}</ContactsTableCeil>
+                <ContactsTableCeil>
+                  <ListBtn
+                    type="button"
+                    onClick={() => {
+                      onRemove(id);
+                    }}
+                  >
+                    Delet
+                  </ListBtn>
+                </ContactsTableCeil>
+              </ContactsTableRow>
+            );
+          })}
+        </tbody>
+      </ContactsTable>
     </>
   );
 };

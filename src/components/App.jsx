@@ -1,47 +1,37 @@
 import React, { Component } from 'react';
 
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
 
-import { GlobalStyle } from './GlobalStyle/GlobalStyle';
 import { Layout } from './GlobalStyle/Layout/Layout.styled';
 
-import { Section } from './Section/Section';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
+import { Section } from './Section';
+import { ContactForm } from './ContactForm';
+import { ContactList } from './ContactList';
 import { Filter } from './Filter/Filter';
+import initialContacts from '../data/contacts';
 
 export class App extends Component {
-  static defaultProps = {
-    initialContacts: [],
-  };
-
-  static propTypes = {
-    initialContacts: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-  };
-
   state = {
-    contacts: this.props.initialContacts,
+    contacts: initialContacts,
     filter: '',
   };
 
-  addContact = (name, number) => {
+  addContact = ({ name, number }) => {
+    const addContact = { id: nanoid(), name, number };
+    const normalizedName = name.toLowerCase();
+
     const currentName = this.state.contacts.find(
-      item => item.name.toLowerCase() === name.toLowerCase()
+      item => item.name.toLowerCase() === normalizedName
     );
 
-    if (currentName && name.toLowerCase() === currentName.name.toLowerCase()) {
-      alert(`"${name}" is already exist!`);
+    if (currentName) {
+      // if (currentName && name.toLowerCase() === currentName.name.toLowerCase()) {
+      alert(`${name} is already exist!`);
       return;
     }
 
     this.setState(prevState => ({
-      contacts: [{ name, number, id: nanoid() }, ...prevState.contacts],
+      contacts: [addContact, ...prevState.contacts],
     }));
   };
 
@@ -88,8 +78,6 @@ export class App extends Component {
             />
           </Section>
         )}
-
-        <GlobalStyle />
       </Layout>
     );
   }
